@@ -1,27 +1,29 @@
 require 'pry'
 
-def yell_greeting(string)
-  name = string
+print "a".ord ,"=",  97.chr , "\n"
+print "z".ord ,"=", 122.chr , "\n"
+print "A".ord ,"=", 65.chr , "\n"
+print "Z".ord ,"=", 90.chr , "\n"
 
-  
 
-  name = name.upcase
-  greeting = "Hello world, my name is #{name}!"
-  puts greeting
-  
-end
-
-yell_greeting("edward")
-
-def caesarCipher(string, int)
-    input = string
-    input2 = int
-    puts input
-    puts input2
-    puts input + "#{input2}"
+def caesarCipher(string, shift)
     
-end
+  shift %= 26      
+  result = "" 
 
+  string.each_char do |c|
+    if c.ord > 64 && c.ord < 91
+      new_char = ((c.ord - 65 + shift) % 26 + 65).chr
+    elsif c.ord > 96 && c.ord < 123 
+      new_char = ((c.ord - 97 + shift) % 26 + 97).chr
+    else
+      new_char = c
+    end
+    result += new_char
+  end
+
+  puts result      
+end
 
 
 puts('enter string')
