@@ -49,7 +49,7 @@ class Board
         return false
     end
 
-    def checkThreeInARow
+    def checkThreeInARowX
         if @@m[0,0] == "X" && @@m[0,1] == "X" && @@m[0,2] == "X"
             return true
         elsif @@m[1,0] == "X" && @@m[1,1] == "X" && @@m[1,2] == "X"
@@ -66,8 +66,12 @@ class Board
             return true
         elsif @@m[2,2] == "X" && @@m[1,1] == "X" && @@m[0,0] == "X"
             return true
+        end
+        return false
+    end
 
-        elsif @@m[0,0] == "O" && @@m[0,1] == "O" && @@m[0,2] == "O"
+    def checkThreeInARowO
+        if @@m[0,0] == "O" && @@m[0,1] == "O" && @@m[0,2] == "O"
             return true
         elsif @@m[1,0] == "O" && @@m[1,1] == "O" && @@m[1,2] == "O"
             return true
@@ -139,9 +143,15 @@ while counter != 9
     end
 
     #object.displayBoard
-    if object.checkThreeInARow == true
-       break
+    if object.checkThreeInARowX == true
+        puts "player 1 wins"
+        break
     end
+
+    if object.checkThreeInARowO == true
+        puts "player 2 wins"
+        break
+     end
 
     counter +=1
 end
